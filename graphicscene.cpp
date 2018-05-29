@@ -83,6 +83,12 @@ void MyScene::update() {
 }
 // -------------------------------------------------------------------------------------------- //
 
+//fonction permettant aux lions de manger les gazelles
+//entree:
+//sortie:
+void MyScene::combat(){
+
+}
 
 //***FONCTION PEUPLEMENT ***//
 
