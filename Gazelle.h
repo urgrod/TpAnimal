@@ -13,8 +13,7 @@ class Gazelle: public Animal
 {
 	
 private:
-	//varibale lettre correspond à la lettre G (Partie utilie pour la chasse);
-static const char lettre = 'G';
+    static const char lettre = 'G';
 
 
 public:
@@ -24,7 +23,8 @@ public:
 	
 	//Destructeur
 	virtual ~Gazelle(){}
-	//Getter de lettre
+
+    //getter
 	virtual char getLettre();
 };
 #endif

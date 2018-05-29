@@ -21,26 +21,22 @@ class MyScene : public QGraphicsScene {
 
 public :
 
-	// Constructeur et Destructeur
+    // Constructeur
 	MyScene(QObject * parent = 0);
+    //destructeur
 	~MyScene(){};
 	
 public slots:
-	//Fonction de déplacement des différents animaux
 	void update();
-	//Fonction de peuplement de la scène
 	void peuplement();
-	//Permet de débuter le programme
 	void start();
-	//Permet de "rafraichir" partielement la scène
 	void refresh();
 	
-	//Modifications des différents sliders:
-	void slot_nb_animaux(int);//Gestion du nombre d'animaux
-	void slot_taille_y(int);//Gestion la taille en y 
-	void slot_taille_x(int);//Gestion de la taille en x
-	void slot_energie(int);//Gestion de l'énergie
-	void slot_vitesse(int);//Gestion de la vitesse
+    void slot_nb_animaux(int);
+    void slot_taille_y(int);
+    void slot_taille_x(int);
+    void slot_energie(int);
+    void slot_vitesse(int);
 
 
 private:
