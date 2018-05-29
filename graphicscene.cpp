@@ -90,38 +90,34 @@ void MyScene::combat(){
 
 }
 
-//***FONCTION PEUPLEMENT ***//
-
+//fonction permettant de peupler les animaux sur la map
+//entree: --
+//sortie: --
 void MyScene::peuplement(){
   
-  int x,y;//Initialisation d'une variable x,y et energie
+  int x,y;
 
-  //On regarde le nombre d'animaux 
   for (int i = 0; i < nb_animaux; ++i){ 
 
-    x=rand()%taille_x;//Postion en x aléatoire en fonction de la taille de la map en x
-    y=rand()%taille_y;//Position en y aléatoire en fonction de la taille de la map en y
+    //positionnement aleatoire des animaux sur la map
+    x=rand()%taille_x;
+    y=rand()%taille_y;
 
-    //On affiche ensuite une image de lion ou de gazelle une fois sur 2 pour pouvoir remplir note scène.
+    //on affiche equipropablement les lions et gazelle
     if (i%2 == 0){
 
-      //On affecte à la variable img_gaz l'image correspondante
-      QPixmap img_gaz =QPixmap("gazelle.png");
-
-      //On créer ensuite une nouvelle Gazelle avec une position en x, en y, avec une énergie et son image.
+      //creation des gazelles
+      QPixmap img_gaz =QPixmap("Windows_logo.png");
       tab_anim.push_back(new Gazelle(x, y, energie, img_gaz));
-
-      //Création de l'image en graphique à l'aide du vecteur graphique.
       tab_animGraph.push_back(new QGraphicsPixmapItem(tab_anim[i]->getImg_anim()));
 
-      //On récupére ensuite la position de l'animal en x et en y pour gérer la postion en graphique
+      //on place les animaux sur la map
       tab_animGraph[i]->setPos(tab_anim[i]->getX(),tab_anim[i]->getY());
     }
-    else{//Sinon
+    else{
 
-      //On affecte à la variable img_lion l'image correspondante
-      QPixmap img_lion = QPixmap("lion.png");
-      //On créer ensuite un nouveau Lion avec une position en x, en y, avec une énergie et son image.
+      //creation des lions
+      QPixmap img_lion = QPixmap("linux_PNG30.png");
       tab_anim.push_back(new Lion(x, y, energie, img_lion));
       tab_animGraph.push_back(new QGraphicsPixmapItem(tab_anim[i]->getImg_anim()));
       tab_animGraph[i]->setPos(tab_anim[i]->getX(),tab_anim[i]->getY());
@@ -131,47 +127,52 @@ void MyScene::peuplement(){
 }
 // -------------------------------------------------------------------------------------------- //
 
-//***FONCTION START ***//
+//fonction permettant de lancer la simulation
+//entree: --
+//sortie: --
 void MyScene::start(){
 
-  //Fonction qui va permettre de lancer le programme lorsque la varible démarrage passe à true (Lorsque l'on clique sur le boutton Start)
   peuplement();
   demarrage = true;
 }
 // -------------------------------------------------------------------------------------------- //
 
-
-//**TENTATIVE DE FONCTION REFRESH **//
-void MyScene::refresh(){
-
-}
-// -------------------------------------------------------------------------------------------- //
-
-
-//***************SLOTS POUR GERER LES DIFFÉRENTS SLIDERS ****************************//
-
-void MyScene::slot_nb_animaux(int anim){//Slot pour changer le nombre d'animaux
+//fonction permettant de changer le nombre d'animaux
+//entree: nouveaux nombre d'animaux
+//sortie:--
+void MyScene::slot_nb_animaux(int anim){
   nb_animaux = anim;
 }
 // -------------------------------------------------------------------------------------------- //
 
-
-void MyScene::slot_taille_y(int y){//Slot pour modifier la taille de la scene en x
+//fonction permettant de changer la taille en y
+//entree: nouveaulle taille en y
+//sortie:--
+void MyScene::slot_taille_y(int y){
   taille_y = y;
 }
 // -------------------------------------------------------------------------------------------- //
 
-void MyScene::slot_taille_x(int x){//Slot pour modifier la taille de la scene en y
+//fonction permettant de changer la taille en x
+//entree: nouvelle taille en x
+//sortie:--
+void MyScene::slot_taille_x(int x){
  taille_x = x;
 }
 // -------------------------------------------------------------------------------------------- //
 
-void MyScene::slot_energie(int energie_init){//Slot pour modifier l'énergie
+//fonction permettant de changer l'energie des animaux
+//entree: nouvelle taille en energie
+//sortie:--
+void MyScene::slot_energie(int energie_init){
  energie = energie_init;
 }
 // -------------------------------------------------------------------------------------------- //
 
-void MyScene::slot_vitesse(int vitesse_init){//Slot pour modifier la vitesse
+//fonction permettant de changer la vitesse de la simulation
+//entree:nouvelle vitesse de la simulation
+//sortie:--
+void MyScene::slot_vitesse(int vitesse_init){
   vitesse = vitesse_init;
   timer->setInterval(vitesse);
 }
