@@ -25,6 +25,8 @@ public :
 	MyScene(QObject * parent = 0);
     //destructeur
 	~MyScene(){};
+
+    void combat();
 	
 public slots:
 	void update();

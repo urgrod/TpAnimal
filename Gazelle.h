@@ -26,5 +26,6 @@ public:
 
     //getter
 	virtual char getLettre();
+
 };
 #endif

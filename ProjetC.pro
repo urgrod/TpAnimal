@@ -3,11 +3,15 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = ProjetC
+TARGET = tpAnimal
 INCLUDEPATH += .
 
 # Input
-HEADERS += Animal.h Gazelle.h graphicscene.h Lion.h mainwindow.h
+HEADERS += Animal.h \
+	   Gazelle.h \
+	   graphicscene.h \
+	   Lion.h \
+	   mainwindow.h
 SOURCES += Animal.cpp \
            Gazelle.cpp \
            graphicscene.cpp \
@@ -15,3 +19,4 @@ SOURCES += Animal.cpp \
            main.cpp \
            mainwindow.cpp
 QT += widgets
+QT += core

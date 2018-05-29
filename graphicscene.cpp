@@ -25,43 +25,36 @@ MyScene::MyScene(QObject * parent): QGraphicsScene(parent){
 //sortie: --
 void MyScene::update() {
 
-  //Boucle if qui nous permet de lancer notre scène lorsque la variable demarrage passe à true 
   if (demarrage == false){
     return;
   }
 
-  //Boucle for qui va parcourir le tableau de vecteur animal dans lequel on va modifier des variables x,y,energie... 
   for(int i=0;i<tab_anim.size();i++){
 
-    //On utilise un deuxieme vecteur de tab_anim pour gérer l'affichage graphique de nos animaux.
-    //On modifie les coordonnées graphiques de l'animal
     int x = tab_animGraph[i]->x();
     int y = tab_animGraph[i]->y();
 
-    //On Modifie l'energie de l'anmial à l'aide de ma classe Animal.
     int energie = tab_anim[i]->getEnergie();
 
-    // On utilise une variable orientation qui va nous permettre de gérer de manière aléatoire les déplacements des différents animaux.
     int orientation = rand() % 4;
 
-    //Tant que les animaux on de l'energie, on parcours la boucle
+    //si les animaux ont de la vie ils peuvent bouger
     if(energie >0){
-        switch(orientation) {//On commence à étudier les différents déplacement
+        switch(orientation) {
 
-        case 0://Cas 0 : Si la position en x pixel est supérieur à 10, alors on décremente le x de 11pixel
+        case 0:
           if (x > 10) x=x-11;
-            tab_animGraph[i]->setX(x);//On récupere la nouvelle postion en x 
-            tab_anim[i]->SetEnergie(energie-1);//Et puis on décremente l'energie de 1 . 
+            tab_animGraph[i]->setX(x);
+            tab_anim[i]->SetEnergie(energie-1);//on diminue l'energie de 1 a chaque deplacement
           break;
 
-        //On traite ensuite tout les différents cas en fonction de la taille de la map en x et en y, pour gérer chaque déplacement. 
         case 1:
           if (x < taille_x - 10) x=x+11;
             tab_animGraph[i]->setX(x);
             tab_anim[i]->SetEnergie(energie-1);
           break;
 
-        case 2://Idem que le cas 0 mais avec la variable y 
+        case 2:
           if (y > 10) y=y-11;
             tab_animGraph[i]->setY(y);
             tab_anim[i]->SetEnergie(energie-1);
@@ -74,9 +67,9 @@ void MyScene::update() {
           break;
       }
     }
-    //Lorsque l'animal n'a plus d'énergie, on sort du switch et on affiche une image d'animal mort.
+    //lorsque l'animal a plus de vie on affiche une tombe
     else if(energie == 0){
-      tab_animGraph[i]->setPixmap(QPixmap("mort.png"));
+      tab_animGraph[i]->setPixmap(QPixmap("tombe.png"));
       tab_animGraph.erase(tab_animGraph.begin(), tab_animGraph.end());  
     }
   }
@@ -107,7 +100,7 @@ void MyScene::peuplement(){
     if (i%2 == 0){
 
       //creation des gazelles
-      QPixmap img_gaz =QPixmap("Windows_logo.png");
+      QPixmap img_gaz =QPixmap("Windows_logo.png").scaled(50,50);
       tab_anim.push_back(new Gazelle(x, y, energie, img_gaz));
       tab_animGraph.push_back(new QGraphicsPixmapItem(tab_anim[i]->getImg_anim()));
 
@@ -117,7 +110,7 @@ void MyScene::peuplement(){
     else{
 
       //creation des lions
-      QPixmap img_lion = QPixmap("linux_PNG30.png");
+      QPixmap img_lion = QPixmap("linux_PNG30.png").scaled(50,50);
       tab_anim.push_back(new Lion(x, y, energie, img_lion));
       tab_animGraph.push_back(new QGraphicsPixmapItem(tab_anim[i]->getImg_anim()));
       tab_animGraph[i]->setPos(tab_anim[i]->getX(),tab_anim[i]->getY());

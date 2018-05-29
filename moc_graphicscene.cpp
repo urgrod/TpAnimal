@@ -95,7 +95,6 @@ void MyScene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 0: _t->update(); break;
         case 1: _t->peuplement(); break;
         case 2: _t->start(); break;
-        case 3: _t->refresh(); break;
         case 4: _t->slot_nb_animaux((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->slot_taille_y((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->slot_taille_x((*reinterpret_cast< int(*)>(_a[1]))); break;

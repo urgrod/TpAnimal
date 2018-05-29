@@ -3,7 +3,7 @@
 
 FenetrePrincipale::FenetrePrincipale(): QMainWindow(){
 
-    this ->setWindowTitle("Le folle aventure des gazelles");
+    this ->setWindowTitle("Le folle aventure de Tux");
 
 	widget_general = new QWidget;
 	QHBoxLayout * qbl_general = new QHBoxLayout;
@@ -42,7 +42,7 @@ QGroupBox * FenetrePrincipale::BuildGroupBoxControle(){
     QVBoxLayout * qbox_layout_conteneur = new QVBoxLayout;
 	
     bouton_start = new QPushButton("Debut");
-	bouton_quitter = new QPushButton("Quittez");
+    bouton_quitter = new QPushButton("Quitter");
     plein_ecran = new QCheckBox("Plein Ecran",this);
 
     nb_animaux_label = new QLabel("Nombres d'animaux (Entre 2 et 500) :",this);
