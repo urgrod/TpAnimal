@@ -4,28 +4,25 @@
 #include "Lion.h"
 #include "Gazelle.h"
 
-
-//------------------------------------------------------------------------------------------------------------
-
-//Partie gestion de l'affiche de l'animation :
+//constructeur
 MyScene::MyScene(QObject * parent): QGraphicsScene(parent){
 
-  //Valeurs max pour la scène en X et en Y 
   int MAX_X = 800;
   int MAX_Y = 500;
 
-  //Création de la scène, avec une taille en x et en y 
   this->setSceneRect(0, 0, MAX_X, MAX_Y);
 
-
-  //Initialisation d'un timer qui nous permet de rafraichir les images toutes les n millisecondes. 
+// initialisation du timer
   timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()),this,SLOT(update()));
   timer->start(vitesse);
 }
+// -------------------------------------------------------------------------------------------- //
 
 
-//****FONCTION UPDATE ****//
+//fonction permettant de mettre a jour les animaux a chaque tour
+//entree: --
+//sortie: --
 void MyScene::update() {
 
   //Boucle if qui nous permet de lancer notre scène lorsque la variable demarrage passe à true 
@@ -84,6 +81,7 @@ void MyScene::update() {
     }
   }
 }
+// -------------------------------------------------------------------------------------------- //
 
 
 //***FONCTION PEUPLEMENT ***//
@@ -125,6 +123,7 @@ void MyScene::peuplement(){
     this->addItem(tab_animGraph[i]);
   }
 }
+// -------------------------------------------------------------------------------------------- //
 
 //***FONCTION START ***//
 void MyScene::start(){
@@ -133,12 +132,14 @@ void MyScene::start(){
   peuplement();
   demarrage = true;
 }
+// -------------------------------------------------------------------------------------------- //
 
 
 //**TENTATIVE DE FONCTION REFRESH **//
 void MyScene::refresh(){
 
 }
+// -------------------------------------------------------------------------------------------- //
 
 
 //***************SLOTS POUR GERER LES DIFFÉRENTS SLIDERS ****************************//
@@ -146,20 +147,26 @@ void MyScene::refresh(){
 void MyScene::slot_nb_animaux(int anim){//Slot pour changer le nombre d'animaux
   nb_animaux = anim;
 }
+// -------------------------------------------------------------------------------------------- //
+
 
 void MyScene::slot_taille_y(int y){//Slot pour modifier la taille de la scene en x
   taille_y = y;
 }
+// -------------------------------------------------------------------------------------------- //
 
 void MyScene::slot_taille_x(int x){//Slot pour modifier la taille de la scene en y
  taille_x = x;
 }
+// -------------------------------------------------------------------------------------------- //
 
 void MyScene::slot_energie(int energie_init){//Slot pour modifier l'énergie
  energie = energie_init;
 }
+// -------------------------------------------------------------------------------------------- //
 
 void MyScene::slot_vitesse(int vitesse_init){//Slot pour modifier la vitesse
   vitesse = vitesse_init;
   timer->setInterval(vitesse);
 }
+// -------------------------------------------------------------------------------------------- //

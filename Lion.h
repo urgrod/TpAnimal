@@ -22,10 +22,9 @@ public:
 	//Constructeur
 	Lion(){}
 	Lion(int x, int y, int energie,QPixmap img_lion): Animal(x,y,energie,img_lion){}
-
 	//Destructeur
 	virtual ~Lion(){}
-	//Getter de lettre
+
 	virtual char getLettre();
 };
 #endif

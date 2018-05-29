@@ -40,23 +40,16 @@ public slots:
 
 
 private:
-	// Créaton d'un Vecteur d'animaux
 	vector <Animal*>tab_anim;
 
-	// Créaton d'un Vecteur d'animaux héritant des différents constructeurs de QGrapgicsPixmaItem
 	vector <QGraphicsPixmapItem*> tab_animGraph;
-	//Variable timer
 	QTimer * timer;
 
-	//Initialisation des différentes variables nécéssaire au démarrage de la scène
-	//On affecte à chaque variable une valeur de départ, pour que la scène puisse ce lancer sans modification des sliders.
-    int nb_animaux = 10;//Nombre d'animaux de départ
-    int taille_x = 50;//Taille x de départ
-    int taille_y = 50;//Taille y de départ
-    int energie = 100;//Energie de départ
-    int vitesse = 50;//Vitesse de départ
-
-	//Variable booleene initialisée à false ici.
+    int nb_animaux = 10;//nb d'animaux initial
+    int taille_x = 50;//x initial
+    int taille_y = 50;//y initial
+    int energie = 100;//energie initiale
+    int vitesse = 50;//vitesse initiale
     bool demarrage = false;
 	
 };
